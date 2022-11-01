@@ -6,8 +6,8 @@ const Header = () => {
         <h1>NC GAMES</h1>
         <nav>
             <Link to='/comunity' > COMUNITY </Link>
-            <Link to='/reviews' > HOME </Link>
-            <Link to='/newReview' > NEW REVIEW </Link>
+            <Link to='/' > HOME </Link>
+            <Link to='/reviewPage/newReview' > NEW REVIEW </Link>
         </nav>
         <ProfileWidget />
     </header>

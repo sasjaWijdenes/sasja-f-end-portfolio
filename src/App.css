@@ -113,9 +113,14 @@ header {
   padding: 0.5rem;
 }
 .card-info-top {
+  width: 90%;
   font-size: 2rem;
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+}
+.card-review-body {
+  width: 90%;
 }
 .votes, .comments {
   position: absolute;

@@ -32,10 +32,9 @@ function App() {
       
       <Routes>
         <Route path='/' element={<Home allReviews={ allReviews } />} />
-        <Route path='/reviews' element={<Home allReviews={ allReviews } />} />
         <Route path='reviews/:categories' element={<Home allReviews={ allReviews } />} />
-        <Route path='/reviews/:review_id' element={<IndividualReview/>} />
-        <Route path='/reviews/newReview' element={<NewReview/>} />
+        <Route path='/reviewPage/:review_id' element={<IndividualReview/>} />
+        <Route path='/reviewPage/newReview' element={<NewReview/>} />
         <Route path='/comunity' element={<Comunity/>} />
         </Routes>
       </div>
