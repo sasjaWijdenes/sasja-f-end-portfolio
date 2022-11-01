@@ -17,7 +17,7 @@ const Sidebar = () => {
     return <nav id="sidebar-nav"><ul id='nav-list'>
         {categories.map(category => {
             const {slug, description} = category
-            return <Link to='/' key={`${slug}`}> <li >
+            return <Link to={`/reviews/${slug}`} key={`${slug}`}> <li >
                 <h2>{slug}</h2>
                 <p>{description}</p>
             </li>
