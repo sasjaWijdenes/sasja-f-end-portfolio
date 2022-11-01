@@ -125,6 +125,34 @@ header {
   font-size: 1.5rem;
   padding: 0.5rem;
 }
+@media screen and (max-width: 1000px) {
+  .card-info{
+    font-size: 0.8rem;
+  }
+  .card-title{
+    font-size: 1.5rem;
+  }
+  .card-chip {
+    font-size: 1rem;
+  }
+  .card-info-top p {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .card-info{
+    font-size: 0.4rem;
+  }
+  .card-title{
+    font-size: 1rem;
+  }
+  .card-chip {
+    font-size: 0.6rem;
+  }
+  .card-info-top p {
+    font-size: 0.9rem;
+  }
+}
 .card-info-top {
   width: 90%;
   font-size: 2rem;
