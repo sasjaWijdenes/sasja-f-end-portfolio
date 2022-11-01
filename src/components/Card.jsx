@@ -6,6 +6,9 @@ const Card = ({ review }) => {
     return <div className="card" id="review_id">
         <h3 className="card-title">{ `${title}` }</h3>
         <img src={`${review_img_url}`} alt="{title}" />
+        <button className='votes'>Votes: {votes} </button>
+        <button className="comments">Comments: {comment_count}</button>
+        <div className="category-chip"> {category} </div>
         <div className="card-info">
             <div className="card-info-top">
                 <p className="card-reviewer"> {`${owner}`} </p>
