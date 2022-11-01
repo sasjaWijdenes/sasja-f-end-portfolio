@@ -1,6 +1,29 @@
+import * as api from '../api.js';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+
+
 const Sidebar = () => {
-    return <nav id="sidebar-nav">
-        <p>categories here</p>
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        api.fetchCategories().then(({ data: { categories: fetchedCategories } }) => {
+            setCategories(fetchedCategories)
+        }, [])
+    })
+
+
+    return <nav id="sidebar-nav"><ul id='nav-list'>
+        {categories.map(category => {
+            const {slug, description} = category
+            return <Link to='/' key={`${slug}`}> <li >
+                <h2>{slug}</h2>
+                <p>{description}</p>
+            </li>
+            </Link>
+        })}
+    </ul>
     </nav>
 }
 

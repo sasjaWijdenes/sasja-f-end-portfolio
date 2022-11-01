@@ -7,3 +7,7 @@ const api = axios.create({
 export const fetchAllReviews = () => {
     return api.get('api/reviews')
 }
+
+export const fetchCategories = () => {
+    return api.get('api/categories')
+}
