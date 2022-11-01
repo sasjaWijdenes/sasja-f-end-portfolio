@@ -11,3 +11,7 @@ export const fetchAllReviews = () => {
 export const fetchCategories = () => {
     return api.get('api/categories')
 }
+
+export const fetchReviewsByCategory = (category) => {
+    return api.get(`api/reviews?category=${category}`)
+}

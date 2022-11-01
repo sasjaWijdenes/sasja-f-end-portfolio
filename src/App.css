@@ -48,22 +48,35 @@ body {
   margin: 20px;
 }
 
-
-
+/* HEADER */
 header {
   grid-area: header;
-  background-color: rgb(226, 214, 43);
+  background-color: rgb(27, 25, 104);
   height: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 0 20px;
+  color: white;
 }
 
+/* SIDEBAR */
 #sidebar-nav {
   grid-area: sidebar;
   background-color: red;
   height: 100%;
+}
+#nav-list {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: sticky;
+  top: 20px;
+  margin-block: 20px;
+}
+.nav-list-item {
+  margin-inline: 10px;
 }
 
 /* REVIEW CARDS */
