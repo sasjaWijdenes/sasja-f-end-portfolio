@@ -28,15 +28,19 @@ const IndividualReview = () => {
                 <h3>{category}</h3>
                 <h3>{postedAgo}</h3>
             </div>
-            
         </section>
         <section className="body-review-section">
-            <h3>{owner}</h3>
-            <h3>{designer}</h3>
+            <div className="body-review-top" >
+                <h3>Author: {owner}</h3>
+                <h3>Designer: {designer}</h3>
+            </div>
             <p>{review_body}</p>
-            <button>{votes}</button>
-            <button>{comment_count}</button>
         </section>
+            <div className="review-pg-btn-cont">
+                <button>Votes: {votes}</button>
+                <button>Comments: {comment_count}</button>
+            </div>
+        
         <section className="comment-section">Comments to go here ...</section>
     </main>
 }
