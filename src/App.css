@@ -129,12 +129,13 @@ header {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding-top: 50px;
 }
 .card {
-  height: 50vw;
-  width: 50vw;
+  height: 85vw;
+  width: 90vw;
   max-width: 700px;
-  max-height: 600px;
+  max-height: 650px;
   border-radius: 10px;
   margin: 10px;
   position: relative;
@@ -171,30 +172,30 @@ header {
 }
 @media screen and (max-width: 1000px) {
   .card-info{
-    font-size: 0.8rem;
-  }
-  .card-title{
     font-size: 1.5rem;
   }
+  .card-title{
+    font-size: 2rem;
+  }
   .card-chip {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   .card-info-top p {
-    font-size: 1.3rem;
+    font-size: 1em;
   }
 }
 @media screen and (max-width: 600px) {
   .card-info{
-    font-size: 0.4rem;
-  }
-  .card-title{
     font-size: 1rem;
   }
+  .card-title{
+    font-size: 1.3rem;
+  }
   .card-chip {
-    font-size: 0.6rem;
+    font-size: 1rem;
   }
   .card-info-top p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 }
 .card-info-top {

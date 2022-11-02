@@ -23,9 +23,7 @@ const Sidebar = () => {
 
     const toggleNav = () => {
         setToggleSideBar(!toggleSideBar)
-
     }
-
 
     return <nav id="sidebar-nav" className= {toggleSideBar || screenWidth > 750 ? '': 'colapse'} >
         {((toggleSideBar || screenWidth > 750) && (  
