@@ -25,6 +25,7 @@ body {
 #splash {
   background-image: url('./imgs/splash-img.jpg');
   background-size: cover;
+  background-position: center center;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -65,6 +66,7 @@ header {
   grid-area: sidebar;
   background-color: red;
   height: 100%;
+  position: relative;
 }
 #nav-list {
   min-height: 90vh;
@@ -78,6 +80,48 @@ header {
 .nav-list-item {
   margin-inline: 10px;
 }
+.hamburger-btn {  
+    display: none;
+}
+@media screen and (max-width: 750px){
+  .hamburger-btn {
+  width: 112px;
+  position: absolute;
+  top: 0;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  }
+  .hm-bar {
+    display: block;
+    width: 40px;
+    height: 10px;
+    background-color: black;
+  }
+  .main-website {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  header {
+    grid-column: 1 / 4;
+  }
+  main, #sidebar-nav {
+    grid-row: 2 / 3;
+  }
+  main {
+    grid-column: 1 / -1;
+  }
+  #sidebar-nav {
+    grid-column: 1 / 3;
+    z-index: 2;
+  }
+  
+}
+.colapse {
+  width: 0;
+}
+
 
 /* REVIEW CARDS */
 .review-cards-container {
