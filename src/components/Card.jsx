@@ -9,24 +9,49 @@ const Card = ({ review }) => {
     const { review_id, title, votes, comment_count, review_img_url, created_at, review_body, owner, designer, category } = review;
 
     const [cardVotes, setCardVotes] = useState(votes)
+    const [upVoted, setUpVoted] = useState(false)
+    const [downVoted, setDownVoted] = useState(false)
     
     const reviewBody = review_body.slice(0, 100) + ' . . .'
     const postedAgo = dayjs(created_at).fromNow()
 
-    const incrementVote = (vote) => {
-        const body = { inc_votes: vote }
-        api.addVote(review_id, body).then(res => {
-            if (res.status !== 200) setCardVotes(cardVotes - 1)
-        })
-        setCardVotes(cardVotes + 1)
+
+    const upVote = () => {
+        if (downVoted && !upVoted) setDownVoted(false)
+        if (!upVoted) {
+            api.addVote(review_id, { inc_votes: 1 }).then(res => {
+                if (res.status !== 200) {
+                    setCardVotes(cardVotes - 1)
+                    setUpVoted(false)
+                }
+            })
+            setCardVotes(prevCardVotes => prevCardVotes + 1)
+        }
+        if (!downVoted) setUpVoted(true)
     }
+    const downVote = () => {
+        if (upVoted && !downVoted) setUpVoted(false)
+        if (!downVoted) {
+            api.addVote(review_id, { inc_votes: -1 }).then(res => {
+                if (res.status !== 200) {
+                    setCardVotes(cardVotes - 1)
+                    setDownVoted(false)
+                }
+            })
+            setCardVotes(prevCardVotes => prevCardVotes - 1)
+        }
+        if (!upVoted) setDownVoted(true)
+    }
+    
     
     return <div className="card">
         <h3 className="card-title">{ `${title}` }</h3>
         <img src={`${review_img_url}`} alt="{title}" />
-        <button onClick={incrementVote(1)} className='votes'> <FaAngleUp /> </button>
-        <div className='vote-disp'>{cardVotes}</div>
-        <button onClick={incrementVote(-1)} className='votes'> <FaAngleDown /> </button>
+        <div className="vote-cont">
+            <FaAngleUp onClick={upVote} className={`upVote ${upVoted? 'grey-out' : ''}`} />
+            <div className='vote-disp'>{cardVotes}</div>
+            <FaAngleDown onClick={downVote} className={`downVote ${downVoted? 'grey-out' : ''}`} />
+        </div>
         <button className="comments">Comments: {comment_count}</button>
         <div className="category-chip"> {category} </div>
         <div className="card-info">
