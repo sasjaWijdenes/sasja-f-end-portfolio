@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -9,6 +9,7 @@ import Comunity from './components/Comunity';
 import NewReview from './components/NewReview';
 import Splash from './components/Splash';
 import * as api from './api.js'
+import CategoryReviews from './components/CategoryReviews';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -32,7 +33,7 @@ function App() {
       
       <Routes>
         <Route path='/' element={<Home allReviews={ allReviews } />} />
-        <Route path='reviews/:categories' element={<Home allReviews={ allReviews } />} />
+        <Route path='reviews/:categoryX' element={<CategoryReviews />} />
         <Route path='/reviewPage/:review_id' element={<IndividualReview/>} />
         <Route path='/reviewPage/newReview' element={<NewReview/>} />
         <Route path='/comunity' element={<Comunity/>} />
