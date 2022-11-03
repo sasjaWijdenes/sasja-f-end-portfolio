@@ -22,7 +22,6 @@ const Card = ({ review }) => {
         if (downVoted && !upVoted) setDownVoted(false)
         if (!upVoted) {
             api.addVote(review_id, { inc_votes: 1 }).catch(err => {
-                console.log({ 'error from upvote: ': { err } })
                 setCardVotes(cardVotes - 1)
                 setVotingFailed(true)
                 setUpVoted(false)
@@ -36,7 +35,6 @@ const Card = ({ review }) => {
         if (upVoted && !downVoted) setUpVoted(false)
         if (!downVoted) {
             api.addVote(review_id, { inc_votes: -1 }).catch(err => {
-                console.log({ 'error from downvote: ': { err } })
                 setCardVotes(cardVotes - 1)
                 setVotingFailed(true)
                 setDownVoted(false)

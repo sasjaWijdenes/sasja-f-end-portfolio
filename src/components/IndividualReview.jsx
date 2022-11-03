@@ -24,7 +24,6 @@ const IndividualReview = () => {
         api.fetchComments(review_id).then(({ data: { comments } }) => {
             setComments(comments)
             setIsLoadingComments(false)
-            console.log(comments, typeof comments, Array.isArray(comments))
         })
     }, [])
 
