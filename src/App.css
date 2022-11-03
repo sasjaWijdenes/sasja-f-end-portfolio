@@ -272,6 +272,7 @@ header {
   height: 10%;
   position: absolute;
   top: 0;
+  padding: 10px;
 }
 .upper-review-section img {
   width: 100%;
