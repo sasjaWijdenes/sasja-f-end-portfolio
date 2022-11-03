@@ -5,15 +5,18 @@
 }
 
 :root {
-  --text-background: rgba(0, 0, 0, 0.5);
+  --text-background: rgba(53, 103, 110, 0.5);
   --dark-tone: rgb(27, 25, 104);
-  --light-tone: white;
-  --background: black;
+  --light-tone: rgb(235, 237, 254);
+  --background: rgb(63, 64, 18);
+  --side-bar: rgb(34, 65, 68)
   --highlight: red;
+  
 }
 
 body {
   min-height: 100vh;
+  text-decoration: none;
 }
 
 .main-website {
@@ -54,13 +57,17 @@ body {
 }
 
 main {
+  background-image: url('./imgs/main-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
   background-color: var(--background);
 }
 
 header {
   grid-area: header;
   background-color: var(--dark-tone);
-  height: 20vh;
+  height: 30vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,15 +75,48 @@ header {
   color: var(--light-tone);
 }
 
+/* PROFILE WIDGET */
+#profile-widget {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.profile-names {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#userName {
+  grid-area: username;
+}
+#name {
+  grid-area: name;
+}
+#profile-widget img {
+  grid-area: image;
+  height: 140px;
+  width: 150px;
+  border: 2px solid var(--light-tone);
+  border-radius: 50%;
+}
+
 /* SIDEBAR */
 #sidebar-nav {
+  text-decoration: none;
   grid-area: sidebar;
-  background-color: var(--light-tone);
+  background-color: rgb(34, 65, 68);
   height: 100%;
   position: relative;
 }
 #nav-list {
+  list-style: none;
   min-height: 90vh;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -137,6 +177,8 @@ header {
   justify-content: center;
   align-items: center;
   padding-top: 50px;
+  background-size: contain;
+  background-repeat: repeat-y;
 }
 .card {
   height: 85vw;
