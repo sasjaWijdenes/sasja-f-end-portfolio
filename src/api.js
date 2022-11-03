@@ -27,3 +27,7 @@ export const addVote = (review_id, votes) => {
 export const fetchComments = (review_id) => {
     return api.get(`api/reviews/${review_id}/comments`)
 }
+
+export const addCommentVote = (comment_id, votes) => {
+    return api.patch(`api/comments/${comment_id}`, votes)
+}
