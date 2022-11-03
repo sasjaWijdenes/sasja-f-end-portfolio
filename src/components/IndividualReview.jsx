@@ -18,11 +18,7 @@ const IndividualReview = () => {
             setIsLoading(false)
         })
     }, [])
-    useEffect(() => {
-        api.fetchComments(review_id).then(({ data: { comments } }) => {
-    
-        }
-    })
+
     if(isLoading) return <h2>Loading ...</h2>
     const { title, designer, votes, comment_count, review_img_url, created_at, review_body, owner, category } = review;
     const postedAgo = dayjs(created_at).fromNow()
