@@ -274,6 +274,7 @@ header {
 
 /* INDIVIDUAL REVIEW PAGE */
 .review-page {
+  position: relative;
   padding-block: 50px;
   display: flex;
   flex-direction: column;
@@ -384,4 +385,27 @@ header {
 .comment-votes {
   grid-column: 2/3;
   grid-row: 2/3;
+}
+.no-comments {
+  width: 100%;
+  background-color: var(--dark-tone);
+  border: 1px solid var(--light-tone);
+  border-radius: 10px;
+  color: var(--light-tone);
+  margin-block: 5px;
+  padding: 10px;
+}
+.new-comment-cont {
+  position: sticky;
+  top: 10px;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  justify-content: flex-end;
+}
+.new-comment-icon {
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  color: var(--light-tone);
 }

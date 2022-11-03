@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import * as api from '../api.js'
 import Comment from "./Comment.jsx"
+import {FaCommentMedical} from 'react-icons/fa'
 
 const dayjs = require('dayjs'),
     relativeTime = require('dayjs/plugin/relativeTime')
@@ -32,6 +33,9 @@ const IndividualReview = () => {
     const { title, designer, votes, comment_count, review_img_url, created_at, review_body, owner, category } = review;
     const postedAgo = dayjs(created_at).fromNow()
     return <main className="review-page">
+        <div className="new-comment-cont">
+            <FaCommentMedical className="new-comment-icon" />
+        </div>
         <section className="upper-review-section">
             <h2>{title}</h2>
             <img src={`${review_img_url}`} alt={title} />
@@ -53,6 +57,7 @@ const IndividualReview = () => {
             </div>
         
         <section className="comment-section">
+            
             {isLoadingComments ?
                 <p>Loading Comments ...</p> :
                 comments.length ?
@@ -63,7 +68,7 @@ const IndividualReview = () => {
                         })}
                     </>
                 :
-                    <p>A tummble weed rolls folornly over a desolate, comment-less landscape ... </p>
+                    <p className="no-comments">A tummble weed rolls folornly over a desolate, comment-less landscape ... </p>
                 
             }
             
