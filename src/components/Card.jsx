@@ -13,7 +13,6 @@ const Card = ({ review }) => {
     const [upVoted, setUpVoted] = useState(false)
     const [downVoted, setDownVoted] = useState(false)
     const [votingFailed, setVotingFailed] = useState(false)
-    
     const reviewBody = review_body.slice(0, 100) + ' . . .'
     const postedAgo = dayjs(created_at).fromNow()
 
@@ -46,7 +45,6 @@ const Card = ({ review }) => {
         }
         if (!upVoted) setDownVoted(true)
     }
-    
     
     return <Link to={`reviewPage/${review_id}`} className="card">
         <h3 className="card-title">{ title }</h3>
