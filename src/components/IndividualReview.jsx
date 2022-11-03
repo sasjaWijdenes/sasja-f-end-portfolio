@@ -8,6 +8,7 @@ const dayjs = require('dayjs'),
 const IndividualReview = () => {
     const { review_id } = useParams(),
         [review, setReview] = useState(),
+        [comments, setComments] = useState(),
         [isLoading, setIsLoading] = useState(true)
     
     dayjs.extend(relativeTime)
@@ -15,7 +16,12 @@ const IndividualReview = () => {
         api.fetchReviewById(review_id).then(({ data: { review } }) => {
             setReview(review)
             setIsLoading(false)
-        }, [])
+        })
+    }, [])
+    useEffect(() => {
+        api.fetchComments(review_id).then(({ data: { comments } }) => {
+    
+        }
     })
     if(isLoading) return <h2>Loading ...</h2>
     const { title, designer, votes, comment_count, review_img_url, created_at, review_body, owner, category } = review;
@@ -41,7 +47,9 @@ const IndividualReview = () => {
                 <button>Comments: {comment_count}</button>
             </div>
         
-        <section className="comment-section">Comments to go here ...</section>
+        <section className="comment-section">
+
+        </section>
     </main>
 }
 export default IndividualReview
