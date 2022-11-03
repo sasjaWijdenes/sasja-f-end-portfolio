@@ -18,7 +18,8 @@ const Card = ({ review }) => {
     const postedAgo = dayjs(created_at).fromNow()
 
 
-    const upVote = () => {
+    const upVote = (event) => {
+        event.preventDefault()
         if (downVoted && !upVoted) setDownVoted(false)
         if (!upVoted) {
             api.addVote(review_id, { inc_votes: 1 }).catch(err => {
@@ -31,7 +32,8 @@ const Card = ({ review }) => {
         }
         if (!downVoted) setUpVoted(true)
     }
-    const downVote = () => {
+    const downVote = (event) => {
+        event.preventDefault()
         if (upVoted && !downVoted) setUpVoted(false)
         if (!downVoted) {
             api.addVote(review_id, { inc_votes: -1 }).catch(err => {
