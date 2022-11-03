@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -11,9 +11,12 @@ import Splash from './components/Splash';
 import * as api from './api.js'
 import CategoryReviews from './components/CategoryReviews';
 
+export const userContext = createContext()
+
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [allReviews, setAllReviews] = useState([])
+  const [isLoading, setIsLoading] = useState(true),
+    [allReviews, setAllReviews] = useState([]),
+    [user, setUser] = useState()
 
   useEffect(() => {
     api.fetchAllReviews().then(({data: {reviews}}) => {
@@ -25,6 +28,7 @@ function App() {
   if (isLoading) return <h2>Loading...</h2> 
 
   return (
+    <userContext.Provider value = { {user, setUser} }>
     <BrowserRouter >
       <Splash />
       <div className="main-website">
@@ -40,7 +44,8 @@ function App() {
         <Route path='/' element={<Home allReviews={ allReviews } />} />
         </Routes>
       </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </userContext.Provider>
   )
 }
 
