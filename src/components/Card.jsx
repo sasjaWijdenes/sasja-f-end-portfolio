@@ -16,11 +16,12 @@ const Card = ({ review }) => {
     const reviewBody = review_body.slice(0, 100) + ' . . .'
     const postedAgo = dayjs(created_at).fromNow()
 
-    const upVote = () => {
+
+    const upVote = (event) => {
+        event.preventDefault()
         if (downVoted && !upVoted) setDownVoted(false)
         if (!upVoted) {
             api.addVote(review_id, { inc_votes: 1 }).catch(err => {
-                console.log({ 'error from upvote: ': { err } })
                 setCardVotes(cardVotes - 1)
                 setVotingFailed(true)
                 setUpVoted(false)
@@ -29,11 +30,11 @@ const Card = ({ review }) => {
         }
         if (!downVoted) setUpVoted(true)
     }
-    const downVote = () => {
+    const downVote = (event) => {
+        event.preventDefault()
         if (upVoted && !downVoted) setUpVoted(false)
         if (!downVoted) {
             api.addVote(review_id, { inc_votes: -1 }).catch(err => {
-                console.log({ 'error from downvote: ': { err } })
                 setCardVotes(cardVotes - 1)
                 setVotingFailed(true)
                 setDownVoted(false)

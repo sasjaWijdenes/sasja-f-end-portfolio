@@ -32,11 +32,12 @@ function App() {
       <Sidebar />
       
       <Routes>
-        <Route path='/' element={<Home allReviews={ allReviews } />} />
         <Route path='reviews/:categoryX' element={<CategoryReviews />} />
-        <Route path='/reviewPage/:review_id' element={<IndividualReview/>} />
+        <Route path='reviews/:categoryX/reviewPage/:review_id' element={<IndividualReview />} />
+        <Route path='reviewPage/:review_id' element={<IndividualReview />} />
         <Route path='/reviewPage/newReview' element={<NewReview/>} />
-        <Route path='/comunity' element={<Comunity/>} />
+        <Route path='/comunity' element={<Comunity />} />
+        <Route path='/' element={<Home allReviews={ allReviews } />} />
         </Routes>
       </div>
     </BrowserRouter>
