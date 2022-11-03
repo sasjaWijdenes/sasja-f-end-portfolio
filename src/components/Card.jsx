@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as api from '../api.js'
 import { useEffect, useState } from 'react'
 import {FaAngleUp, FaAngleDown, FaRegCommentAlt} from 'react-icons/fa'
@@ -6,7 +7,7 @@ const relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 const Card = ({ review }) => {
-    const { review_id, title, votes, comment_count, review_img_url, created_at, review_body, owner, designer, category } = review;
+    const {review_id, title, votes, comment_count, review_img_url, created_at, review_body, owner, category } = review;
 
     const [cardVotes, setCardVotes] = useState(votes)
     const [upVoted, setUpVoted] = useState(false)
@@ -45,7 +46,7 @@ const Card = ({ review }) => {
     }
     
     
-    return <div className="card">
+    return <Link to={`reviewPage/${review_id}`} className="card">
         <h3 className="card-title">{ title }</h3>
         <img src={`${review_img_url}`} alt={title} />
         <div className="vote-cont">
@@ -63,7 +64,7 @@ const Card = ({ review }) => {
             </div>
             <p className="card-review-body"> {`${reviewBody}`} </p>
         </div>
-    </div>
+    </Link>
 }
 
 export default Card
