@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import * as api from '../api.js'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {FaAngleUp, FaAngleDown, FaRegCommentAlt} from 'react-icons/fa'
 const dayjs = require('dayjs')
 const relativeTime = require('dayjs/plugin/relativeTime')

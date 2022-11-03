@@ -23,3 +23,7 @@ export const fetchReviewsByCategory = (category) => {
 export const addVote = (review_id, votes) => {
     return api.patch(`api/reviews/${review_id}`, votes)
 }
+
+export const fetchComments = (review_id) => {
+    return api.get(`api/reviews/${review_id}/comments`)
+}

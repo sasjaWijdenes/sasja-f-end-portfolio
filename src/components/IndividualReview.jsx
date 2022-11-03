@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import * as api from '../api.js'
+import Comment from "./Comment.jsx"
 
 const dayjs = require('dayjs'),
     relativeTime = require('dayjs/plugin/relativeTime')
@@ -9,13 +10,21 @@ const IndividualReview = () => {
     const { review_id } = useParams(),
         [review, setReview] = useState(),
         [comments, setComments] = useState(),
-        [isLoading, setIsLoading] = useState(true)
+        [isLoading, setIsLoading] = useState(true),
+        [isLoadingComments, setIsLoadingComments] = useState(true)
     
     dayjs.extend(relativeTime)
     useEffect(() => {
         api.fetchReviewById(review_id).then(({ data: { review } }) => {
             setReview(review)
             setIsLoading(false)
+        })
+    }, [])
+    useEffect(() => {
+        api.fetchComments(review_id).then(({ data: { comments } }) => {
+            setComments(comments)
+            setIsLoadingComments(false)
+            console.log(comments, typeof comments, Array.isArray(comments))
         })
     }, [])
 
@@ -44,7 +53,20 @@ const IndividualReview = () => {
             </div>
         
         <section className="comment-section">
-
+            {isLoadingComments ?
+                <p>Loading Comments ...</p> :
+                comments.length ?
+                    <>
+                    <p>Comments: {comment_count}</p>
+                    {comments.map((comment) => {
+                        return <Comment comment={comment} key={comment.comment_id} className='comment-component' />
+                        })}
+                    </>
+                :
+                    <p>A tummble weed rolls folornly over a desolate, comment-less landscape ... </p>
+                
+            }
+            
         </section>
     </main>
 }

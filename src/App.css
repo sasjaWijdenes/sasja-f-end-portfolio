@@ -5,7 +5,11 @@
 }
 
 :root {
-  --text-background: rgba(0, 0, 0, 0.5)
+  --text-background: rgba(0, 0, 0, 0.5);
+  --dark-tone: rgb(27, 25, 104);
+  --light-tone: white;
+  --background: black;
+  --highlight: red;
 }
 
 body {
@@ -31,7 +35,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--light-tone);
 }
 
 #splash-reviews {
@@ -45,29 +49,29 @@ body {
 .splash-review {
   height: 100%;
   width: 25%;
-  background-color: black;
+  background-color: var(--background);
   margin: 20px;
 }
 
 main {
-  background-color: black;
+  background-color: var(--background);
 }
 
 header {
   grid-area: header;
-  background-color: rgb(27, 25, 104);
+  background-color: var(--dark-tone);
   height: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 0 20px;
-  color: white;
+  color: var(--light-tone);
 }
 
 /* SIDEBAR */
 #sidebar-nav {
   grid-area: sidebar;
-  background-color: red;
+  background-color: var(--light-tone);
   height: 100%;
   position: relative;
 }
@@ -101,7 +105,7 @@ header {
     display: block;
     width: 40px;
     height: 10px;
-    background-color: black;
+    background-color: var(--background);
   }
   .main-website {
     grid-template-columns: 1fr 1fr 1fr;
@@ -158,7 +162,7 @@ header {
   background-color: var(--text-background);
   position: absolute;
   font-size: 2rem;
-  color: white;
+  color: var(--light-tone);
 }
 .card-info {
   height: 25%;
@@ -169,7 +173,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--text-background);
-  color: white;
+  color: var(--light-tone);
   font-size: 1.5rem;
   padding: 0.5rem;
 }
@@ -223,14 +227,14 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: var(--text-background);
-  color: white;
+  color: var(--light-tone);
   border-radius: 30px;
 }
 .upVote, .downVote {
   width: 100%;
   height: 25%;
   border-radius: 10px;
-  color: white;
+  color: var(--light-tone);
 }
 .grey-out {
   color: grey;
@@ -241,7 +245,7 @@ header {
   position: absolute;
   right: 1%;
   top: 50%;
-  color: white;
+  color: var(--light-tone);
   background-color: var(--text-background);
   padding: 1%;
   border-radius: 10px;
@@ -250,7 +254,7 @@ header {
   position: absolute;
   right: 4%;
   top: 52%;
-  color: white;
+  color: var(--light-tone);
 }
 .category-chip {
   display: flex;
@@ -262,14 +266,15 @@ header {
   position: absolute;
   left: 1%;
   bottom: 30%;
-  background-color: blue;
-  color: white;
+  background-color: var(--highlight);
+  color: var(--light-tone);
   font-size: 1.2em;
   border-radius: 20px;
 }
 
 /* INDIVIDUAL REVIEW PAGE */
 .review-page {
+  padding-block: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -290,7 +295,7 @@ header {
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  color: white;
+  color: var(--light-tone);
   background-color: var(--text-background);
   width: 100%;
   height: 10%;
@@ -311,16 +316,16 @@ header {
   justify-content: space-between;
   width: 90%;
   padding: 5%;
-  color: white;
+  color: var(--light-tone);
   background-color: var(--text-background);
 }
 .body-review-section {
   height: fit-content;
   width: 90%;
-  background-color: darkcyan;
+  background-color: var(--dark-tone);
   border-radius: 10px;
   padding: 10px;
-  color: white;
+  color: var(--light-tone);
 }
 .body-review-top {
   width: 90%;
@@ -339,9 +344,44 @@ header {
 }
 .review-pg-btn-cont button {
   width: 25%;
-  color: white;
-  background-color: darkmagenta;
+  color: var(--light-tone);
+  background-color: var(--dark-tone);
   border-radius: 30px;
 }
 
-
+/* COMMENT SECTION */
+.comment-section {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.comment {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  grid-template-rows: 1fr 4fr;
+  width: 100%;
+  background-color: var(--dark-tone);
+  border: 1px solid var(--light-tone);
+  border-radius: 10px;
+  color: var(--light-tone);
+  margin-block: 5px;
+  padding: 10px;
+}
+.comment-author {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.comment-body {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.comment-date {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.comment-votes {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
