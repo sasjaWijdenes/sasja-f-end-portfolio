@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom"
+import { useParams, Navigate } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import * as api from '../api.js'
 import Comment from "./Comment.jsx"
-import {FaCommentMedical} from 'react-icons/fa'
+import {FaCommentMedical, FaPlus} from 'react-icons/fa'
 
 const dayjs = require('dayjs'),
     relativeTime = require('dayjs/plugin/relativeTime')
@@ -33,7 +33,9 @@ const IndividualReview = () => {
     const postedAgo = dayjs(created_at).fromNow()
     return <main className="review-page">
         <div className="new-comment-cont">
-            <FaCommentMedical className="new-comment-icon" />
+            <a href="#new-comment-section">
+                <FaCommentMedical className="new-comment-icon" />
+            </a>
         </div>
         <section className="upper-review-section">
             <h2>{title}</h2>
@@ -68,10 +70,15 @@ const IndividualReview = () => {
                     </>
                 :
                     <p className="no-comments">A tummble weed rolls folornly over a desolate, comment-less landscape ... </p>
-                
             }
-            
         </section>
+        <section id="new-comment-section">
+            <form id="new-comment-form">
+                <textarea name="new-comment-body" id="new-comment-text" cols="30" rows="10"></textarea>
+                <FaPlus className="add-comment-btn" />
+            </form>
+        </section>
+
     </main>
 }
 export default IndividualReview
