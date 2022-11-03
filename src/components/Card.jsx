@@ -20,12 +20,11 @@ const Card = ({ review }) => {
     const upVote = () => {
         if (downVoted && !upVoted) setDownVoted(false)
         if (!upVoted) {
-            api.addVote(review_id, { inc_votes: 1 }).then(res => {
-                if (res.status !== 200) {
-                    setCardVotes(cardVotes - 1)
-                    setVotingFailed(true)
-                    setUpVoted(false)
-                }
+            api.addVote(review_id, { inc_votes: 1 }).catch(err => {
+                console.log({ 'error from upvote: ': { err } })
+                setCardVotes(cardVotes - 1)
+                setVotingFailed(true)
+                setUpVoted(false)
             })
             setCardVotes(prevCardVotes => prevCardVotes + 1)
         }
@@ -34,12 +33,11 @@ const Card = ({ review }) => {
     const downVote = () => {
         if (upVoted && !downVoted) setUpVoted(false)
         if (!downVoted) {
-            api.addVote(review_id, { inc_votes: -1 }).then(res => {
-                if (res.status !== 200) {
-                    setCardVotes(cardVotes - 1)
-                    setVotingFailed(true)
-                    setDownVoted(false)
-                }
+            api.addVote(review_id, { inc_votes: -1 }).catch(err => {
+                console.log({ 'error from downvote: ': { err } })
+                setCardVotes(cardVotes - 1)
+                setVotingFailed(true)
+                setDownVoted(false)
             })
             setCardVotes(prevCardVotes => prevCardVotes - 1)
         }
@@ -48,8 +46,8 @@ const Card = ({ review }) => {
     
     
     return <div className="card">
-        <h3 className="card-title">{ `${title}` }</h3>
-        <img src={`${review_img_url}`} alt="{title}" />
+        <h3 className="card-title">{ title }</h3>
+        <img src={`${review_img_url}`} alt={title} />
         <div className="vote-cont">
             <FaAngleUp onClick={upVote} className={`upVote ${upVoted? 'grey-out' : ''}`} />
             <div className='vote-disp'>{votingFailed? 'unable to vote': cardVotes}</div>
