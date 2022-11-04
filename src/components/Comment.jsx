@@ -10,7 +10,7 @@ const Comment = ({ comment: {comment_id, body, review_id, author, votes, created
     const postedAgo = dayjs(created_at).fromNow()
     return <div className="comment" >
         <p className="comment-author">{author}</p>
-        <CommentVotingButtons votes={votes} id={comment_id} />
+        {comment_id? <CommentVotingButtons votes={votes} id={comment_id} />: <></>}
         <p className='comment-date'>{postedAgo}</p>
         <p className="comment-body">{body}</p>
     </div>
