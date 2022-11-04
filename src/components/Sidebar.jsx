@@ -30,7 +30,7 @@ const Sidebar = () => {
         <ul id='nav-list'>
             {categories.map(category => {
                 const {slug, description} = category
-                return <Link to={`/reviews/${slug}`} key={`${slug}`}> <li className='nav-list-item'>
+                return <Link style={{textDecoration: 'none'}} to={`/reviews/${slug}`} key={`${slug}`}> <li className='nav-list-item'>
                     <h2>{slug}</h2>
                     <p>{description}</p>
                 </li>
