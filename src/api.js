@@ -31,3 +31,7 @@ export const fetchComments = (review_id) => {
 export const addCommentVote = (comment_id, votes) => {
     return api.patch(`api/comments/${comment_id}`, votes)
 }
+
+export const deleteComment = (comment_id) => {
+    return api.delete(`api/comments/${comment_id}`)
+}

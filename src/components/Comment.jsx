@@ -1,4 +1,6 @@
 import CommentVotingButtons from './CommentVotingButtons'
+import { useContext } from 'react'
+import UserContext from './contexts/UserContext'
 
 const dayjs = require('dayjs')
 const relativeTime = require('dayjs/plugin/relativeTime')
