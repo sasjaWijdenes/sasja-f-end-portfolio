@@ -5,9 +5,9 @@ const Header = () => {
     return <header>
         <h1>NC GAMES</h1>
         <nav>
-            <Link to='/comunity' > COMUNITY </Link>
-            <Link to='/' > HOME </Link>
-            <Link to='/reviewPage/newReview' > NEW REVIEW </Link>
+            <Link className="header-nav" style={{textDecoration: 'none'}} to='/comunity' > COMUNITY </Link>
+            <Link className="header-nav" style={{textDecoration: 'none'}} to='/' > HOME </Link>
+            <Link className="header-nav" style={{textDecoration: 'none'}} to='/reviewPage/newReview' > NEW REVIEW </Link>
         </nav>
         <ProfileWidget />
     </header>

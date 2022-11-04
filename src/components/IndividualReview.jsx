@@ -1,8 +1,9 @@
-import { useParams, Navigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import * as api from '../api.js'
 import Comment from "./Comment.jsx"
-import {FaCommentMedical, FaPlus} from 'react-icons/fa'
+import {FaCommentMedical} from 'react-icons/fa'
+import NewComment from "./NewComment.jsx"
 
 const dayjs = require('dayjs'),
     relativeTime = require('dayjs/plugin/relativeTime')
@@ -11,6 +12,7 @@ const IndividualReview = () => {
     const { review_id } = useParams(),
         [review, setReview] = useState(),
         [comments, setComments] = useState(),
+        [postConfirmed, setPostConfirmed] = useState(false),
         [isLoading, setIsLoading] = useState(true),
         [isLoadingComments, setIsLoadingComments] = useState(true)
     
@@ -26,7 +28,7 @@ const IndividualReview = () => {
             setComments(comments)
             setIsLoadingComments(false)
         })
-    }, [])
+    }, [postConfirmed])
 
     if(isLoading) return <h2>Loading ...</h2>
     const { title, designer, votes, comment_count, review_img_url, created_at, review_body, owner, category } = review;
@@ -63,7 +65,6 @@ const IndividualReview = () => {
                 <p>Loading Comments ...</p> :
                 comments.length ?
                     <>
-                    <p>Comments: {comment_count}</p>
                     {comments.map((comment) => {
                         return <Comment comment={comment} key={comment.comment_id} className='comment-component' />
                         })}
@@ -71,14 +72,9 @@ const IndividualReview = () => {
                 :
                     <p className="no-comments">A tummble weed rolls folornly over a desolate, comment-less landscape ... </p>
             }
+            <NewComment id={review_id} setPostConfirmed={setPostConfirmed} postConfirmed={postConfirmed} />
         </section>
-        <section id="new-comment-section">
-            <form id="new-comment-form">
-                <textarea name="new-comment-body" id="new-comment-text" cols="30" rows="10"></textarea>
-                <FaPlus className="add-comment-btn" />
-            </form>
-        </section>
-
+        
     </main>
 }
 export default IndividualReview

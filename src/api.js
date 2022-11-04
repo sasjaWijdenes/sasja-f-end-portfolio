@@ -35,3 +35,7 @@ export const addCommentVote = (comment_id, votes) => {
 export const getProfiles = () => {
     return api.get(`api/users`)
 }
+
+export const submitComment = (review_id, comment) => {
+    return api.post(`/api/reviews/${review_id}/comments`, comment)
+}

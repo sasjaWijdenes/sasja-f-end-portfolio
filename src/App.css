@@ -9,7 +9,7 @@
   --dark-tone: rgb(27, 25, 104);
   --light-tone: rgb(235, 237, 254);
   --background: rgb(63, 64, 18);
-  --side-bar: rgb(34, 65, 68)
+  --side-bar: rgb(34, 65, 68);
   --highlight: red;
   
 }
@@ -74,6 +74,9 @@ header {
   padding: 0 20px 0 20px;
   color: var(--light-tone);
 }
+.header-nav {
+  color: var(--light-tone);
+}
 
 /* PROFILE WIDGET */
 #profile-widget {
@@ -109,7 +112,7 @@ header {
 #sidebar-nav {
   text-decoration: none;
   grid-area: sidebar;
-  background-color: rgb(34, 65, 68);
+  background-color: var(--side-bar);
   height: 100%;
   position: relative;
 }
@@ -126,6 +129,7 @@ header {
 }
 .nav-list-item {
   margin-inline: 10px;
+  color: var(--light-tone);
 }
 .hamburger-btn {  
     display: none;
@@ -186,6 +190,7 @@ header {
   max-width: 700px;
   max-height: 650px;
   border-radius: 10px;
+  border: 5px solid var(--side-bar);
   margin: 10px;
   position: relative;
   display: flex;
@@ -278,9 +283,7 @@ header {
   border-radius: 10px;
   color: var(--light-tone);
 }
-.grey-out {
-  color: grey;
-}
+
 .comments {
   height: 5%;
   width: 5%;
@@ -521,4 +524,8 @@ header {
   width: 10%;
   color: var(--light-tone);
   margin: 5%;
+}
+
+.grey-out {
+  color: grey;
 }
