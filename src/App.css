@@ -5,15 +5,18 @@
 }
 
 :root {
-  --text-background: rgba(0, 0, 0, 0.5);
+  --text-background: rgba(53, 103, 110, 0.5);
   --dark-tone: rgb(27, 25, 104);
-  --light-tone: white;
-  --background: black;
+  --light-tone: rgb(235, 237, 254);
+  --background: rgb(63, 64, 18);
+  --side-bar: rgb(34, 65, 68);
   --highlight: red;
+  
 }
 
 body {
   min-height: 100vh;
+  text-decoration: none;
 }
 
 .main-website {
@@ -54,29 +57,69 @@ body {
 }
 
 main {
+  background-image: url('./imgs/main-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
   background-color: var(--background);
 }
 
 header {
   grid-area: header;
   background-color: var(--dark-tone);
-  height: 20vh;
+  height: 30vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 0 20px;
   color: var(--light-tone);
 }
+.header-nav {
+  color: var(--light-tone);
+}
+
+/* PROFILE WIDGET */
+#profile-widget {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.profile-names {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#userName {
+  grid-area: username;
+}
+#name {
+  grid-area: name;
+}
+#profile-widget img {
+  grid-area: image;
+  height: 140px;
+  width: 150px;
+  border: 2px solid var(--light-tone);
+  border-radius: 50%;
+}
 
 /* SIDEBAR */
 #sidebar-nav {
+  text-decoration: none;
   grid-area: sidebar;
-  background-color: var(--light-tone);
+  background-color: var(--side-bar);
   height: 100%;
   position: relative;
 }
 #nav-list {
+  list-style: none;
   min-height: 90vh;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -86,6 +129,7 @@ header {
 }
 .nav-list-item {
   margin-inline: 10px;
+  color: var(--light-tone);
 }
 .hamburger-btn {  
     display: none;
@@ -137,6 +181,8 @@ header {
   justify-content: center;
   align-items: center;
   padding-top: 50px;
+  background-size: contain;
+  background-repeat: repeat-y;
 }
 .card {
   height: 85vw;
@@ -144,6 +190,7 @@ header {
   max-width: 700px;
   max-height: 650px;
   border-radius: 10px;
+  border: 5px solid var(--side-bar);
   margin: 10px;
   position: relative;
   display: flex;
@@ -236,9 +283,7 @@ header {
   border-radius: 10px;
   color: var(--light-tone);
 }
-.grey-out {
-  color: grey;
-}
+
 .comments {
   height: 5%;
   width: 5%;
@@ -274,6 +319,7 @@ header {
 
 /* INDIVIDUAL REVIEW PAGE */
 .review-page {
+  position: relative;
   padding-block: 50px;
   display: flex;
   flex-direction: column;
@@ -399,4 +445,87 @@ header {
   align-items: center;
   grid-column: 3;
   grid-row: 1/3;
+}
+.no-comments {
+  width: 100%;
+  background-color: var(--dark-tone);
+  border: 1px solid var(--light-tone);
+  border-radius: 10px;
+  color: var(--light-tone);
+  margin-block: 5px;
+  padding: 10px;
+}
+.new-comment-cont {
+  position: sticky;
+  top: 10px;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  justify-content: flex-end;
+}
+.new-comment-icon {
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  color: var(--light-tone);
+}
+.no-comments {
+  width: 100%;
+  background-color: var(--dark-tone);
+  border: 1px solid var(--light-tone);
+  border-radius: 10px;
+  color: var(--light-tone);
+  margin-block: 5px;
+  padding: 10px;
+}
+
+/* NEW COMMENT SECTION */
+.new-comment-cont {
+  position: sticky;
+  top: 10px;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  justify-content: flex-end;
+}
+.new-comment-icon {
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  color: var(--light-tone);
+}
+#new-comment-section {
+  width: 95%;
+  height: 200px;
+  background-color: var(--dark-tone);
+  color: var(--light-tone);
+  padding: 10px;
+  border: 1px solid var(--light-tone);
+  border-radius: 10px;
+}
+#new-comment-text {
+  background-color: var(--light-tone);
+  color: var(--dark-tone);
+  width: 90%;
+  height: 90%;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: x-large;
+}
+#new-comment-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.add-comment-btn {
+  height: 100%;
+  width: 10%;
+  color: var(--light-tone);
+  margin: 5%;
+}
+
+.grey-out {
+  color: grey;
 }
