@@ -58,7 +58,7 @@ const IndividualReview = () => {
                 <button>Votes: {votes}</button>
                 <button>Comments: {comment_count}</button>
             </div>
-        
+        {console.log(comments.length)}
         <section className="comment-section">
             
             {isLoadingComments ?
@@ -72,7 +72,7 @@ const IndividualReview = () => {
                 :
                     <p className="no-comments">A tummble weed rolls folornly over a desolate, comment-less landscape ... </p>
             }
-            <NewComment id={review_id} setPostConfirmed={setPostConfirmed} postConfirmed={postConfirmed} />
+            <NewComment id={review_id} setComments={setComments} setPostConfirmed={setPostConfirmed} postConfirmed={postConfirmed} />
         </section>
         
     </main>

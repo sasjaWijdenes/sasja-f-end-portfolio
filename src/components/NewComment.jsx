@@ -4,7 +4,7 @@ import { FaPlus } from 'react-icons/fa'
 import { UserContext } from '../contexts/UserContext.jsx'
 import Comment from './Comment'
 
-const NewComment = ({id, setPostConfirmed, postConfirmed}) => {
+const NewComment = ({id, setPostConfirmed, postConfirmed, setComments}) => {
     const [newCommentBody, setNewCommentBody] = useState()
     const [isPosted, setIsPosted] = useState(false)
     const { user, setUser } = useContext(UserContext)
@@ -29,10 +29,10 @@ const NewComment = ({id, setPostConfirmed, postConfirmed}) => {
             setNewCommentBody('')
         })
         setIsPosted(true)
+        setComments((prevComments) => {return prevComments.push(newComment)})
     }
 
     return (<section id="new-comment-section">
-        {isPosted ? <Comment comment={newComment} /> : <></>}
         <form id="new-comment-form">
             <textarea name="new-comment-body" id="new-comment-text" value={newCommentBody} onChange={handleChange} />
             <FaPlus className={`add-comment-btn ${isPosted? 'grey-out': ''}`} onClick={submitComment} />
