@@ -132,20 +132,38 @@ header {
 /* FILTER */
 .filter {
   width: 100%;
-  background-color: var(--dark-tone);
   height: 30px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.filter-radio {
-  appearance: none;
-  background-color: var(--background);
-  color: var(--light-tone);
-  width: 10%;
+.radio-input {
+  display: none;
 }
-.filter-radio::checked {
-  color: red;
+.radio-label {
+  background-color: var(--light-tone);
+  cursor: pointer;
+  transition: 0.1s;
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.radio-input:checked + .radio-label {
+  background-color: var(--highlight);
+  color: var(--light-tone);
+  border: 5px solid var(--dark-tone);
+}
+#toggle-order {
+  height: 100%;
+  width: 15%;
+  background-color: var(--highlight);
+  color: var(--light-tone);
+  overflow: hidden;
+  border-radius: 15px;
 }
 
 

@@ -4,8 +4,8 @@ const api = axios.create({
     baseURL: 'https://sasjas-portfolio.herokuapp.com/'
 })
 
-export const fetchAllReviews = () => {
-    return api.get('api/reviews')
+export const fetchAllReviews = (sort, order) => {
+    return api.get(`api/reviews?sort=${sort}&order=${order? 'ASC': 'DESC'}`)
 }
 
 export const fetchCategories = () => {
@@ -16,8 +16,8 @@ export const fetchReviewById = (review_id) => {
     return api.get(`api/reviews/${review_id}`)
 }
 
-export const fetchReviewsByCategory = (category) => {
-    return api.get(`api/reviews?category=${category}`)
+export const fetchReviewsByCategory = (category, sort, order) => {
+    return api.get(`api/reviews?category=${category}&sort=${sort}&order=${order? 'ASC': 'DESC'}`)
 }
 
 export const addVote = (review_id, votes) => {

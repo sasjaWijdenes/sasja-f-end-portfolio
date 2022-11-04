@@ -14,14 +14,15 @@ import CategoryReviews from './components/CategoryReviews';
 function App() {
   const [isLoading, setIsLoading] = useState(true),
     [allReviews, setAllReviews] = useState([]),
-    [sort, setSort] = useState()
+    [sort, setSort] = useState('created_at'),
+    [order, setOrder] = useState(false)
 
   useEffect(() => {
-    api.fetchAllReviews().then(({data: {reviews}}) => {
+    api.fetchAllReviews(sort, order).then(({data: {reviews}}) => {
       setAllReviews(reviews)
       setIsLoading(false)
     })
-  }, [])
+  }, [sort, order])
   
   if (isLoading) return <h2>Loading...</h2> 
 
@@ -33,12 +34,12 @@ function App() {
       <Sidebar />
       
       <Routes>
-        <Route path='reviews/:categoryX' element={<CategoryReviews />} />
+        <Route path='reviews/:categoryX' element={<CategoryReviews sort={sort} setSort={setSort} order={order} setOrder={setOrder} />} />
         <Route path='reviews/:categoryX/reviewPage/:review_id' element={<IndividualReview />} />
         <Route path='reviewPage/:review_id' element={<IndividualReview />} />
         <Route path='/reviewPage/newReview' element={<NewReview/>} />
         <Route path='/comunity' element={<Comunity />} />
-        <Route path='/' element={<Home allReviews={ allReviews } sort={sort} setSort={setSort} />} />
+        <Route path='/' element={<Home allReviews={ allReviews } sort={sort} setSort={setSort} order={order} setOrder={setOrder} />} />
         </Routes>
       </div>
     </BrowserRouter>
