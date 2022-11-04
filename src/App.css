@@ -129,6 +129,25 @@ header {
   width: 0;
 }
 
+/* FILTER */
+.filter {
+  width: 100%;
+  background-color: var(--dark-tone);
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.filter-radio {
+  appearance: none;
+  background-color: var(--background);
+  color: var(--light-tone);
+  width: 10%;
+}
+.filter-radio::checked {
+  color: red;
+}
+
 
 /* REVIEW CARDS */
 .review-cards-container {

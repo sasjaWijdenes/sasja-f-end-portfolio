@@ -12,8 +12,9 @@ import * as api from './api.js'
 import CategoryReviews from './components/CategoryReviews';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [allReviews, setAllReviews] = useState([])
+  const [isLoading, setIsLoading] = useState(true),
+    [allReviews, setAllReviews] = useState([]),
+    [sort, setSort] = useState()
 
   useEffect(() => {
     api.fetchAllReviews().then(({data: {reviews}}) => {
@@ -37,7 +38,7 @@ function App() {
         <Route path='reviewPage/:review_id' element={<IndividualReview />} />
         <Route path='/reviewPage/newReview' element={<NewReview/>} />
         <Route path='/comunity' element={<Comunity />} />
-        <Route path='/' element={<Home allReviews={ allReviews } />} />
+        <Route path='/' element={<Home allReviews={ allReviews } sort={sort} setSort={setSort} />} />
         </Routes>
       </div>
     </BrowserRouter>
