@@ -8,7 +8,6 @@ const ProfileWidget = () => {
     const [allUsers, setAllUsers] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     
-
     useEffect(() => {
         api.getProfiles().then(({ data: { users } }) => {
             setAllUsers(users)

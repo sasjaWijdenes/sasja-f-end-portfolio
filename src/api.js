@@ -39,3 +39,7 @@ export const getProfiles = () => {
 export const submitComment = (review_id, comment) => {
     return api.post(`/api/reviews/${review_id}/comments`, comment)
 }
+
+export const deleteComment = (comment_id) => {
+    return api.delete(`api/comments/${comment_id}`)
+}

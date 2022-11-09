@@ -4,7 +4,7 @@ import { FaPlus } from 'react-icons/fa'
 import { UserContext } from '../contexts/UserContext.jsx'
 import Comment from './Comment'
 
-const NewComment = ({id, setPostConfirmed, postConfirmed, setComments}) => {
+const NewComment = ({id, setPostConfirmed, postConfirmed, setCommentCount, setComments}) => {
     const [newCommentBody, setNewCommentBody] = useState()
     const [isPosted, setIsPosted] = useState(false)
     const { user, setUser } = useContext(UserContext)
@@ -22,6 +22,7 @@ const NewComment = ({id, setPostConfirmed, postConfirmed, setComments}) => {
         api.submitComment(id, newComment).then(({ data }) => {
             setIsPosted(false)
             setPostConfirmed(true)
+            setCommentCount(count => count+1)
             setNewCommentBody('')
         })
         .catch(() => {

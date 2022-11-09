@@ -32,7 +32,7 @@ const Sidebar = () => {
                 const {slug, description} = category
                 return <Link style={{textDecoration: 'none'}} to={`/reviews/${slug}`} key={`${slug}`}> <li className='nav-list-item'>
                     <h2>{slug}</h2>
-                    <p>{description}</p>
+                    <p className='sidebar-item-desc'>{description}</p>
                 </li>
                 </Link>
             })}

@@ -11,7 +11,8 @@ const dayjs = require('dayjs'),
 const IndividualReview = () => {
     const { review_id } = useParams(),
         [review, setReview] = useState(),
-        [comments, setComments] = useState(),
+        [comments, setComments] = useState([]),
+        [commentCount, setCommentCount] = useState(comments.length),
         [postConfirmed, setPostConfirmed] = useState(false),
         [isLoading, setIsLoading] = useState(true),
         [isLoadingComments, setIsLoadingComments] = useState(true)
@@ -27,6 +28,7 @@ const IndividualReview = () => {
         api.fetchComments(review_id).then(({ data: { comments } }) => {
             setComments(comments)
             setIsLoadingComments(false)
+            setCommentCount(comments.length)
         })
     }, [postConfirmed])
 
@@ -56,23 +58,22 @@ const IndividualReview = () => {
         </section>
             <div className="review-pg-btn-cont">
                 <button>Votes: {votes}</button>
-                <button>Comments: {comment_count}</button>
+                <button>Comments: {commentCount}</button>
             </div>
         {console.log(comments.length)}
         <section className="comment-section">
-            
             {isLoadingComments ?
                 <p>Loading Comments ...</p> :
                 comments.length ?
                     <>
                     {comments.map((comment) => {
-                        return <Comment comment={comment} key={comment.comment_id} className='comment-component' />
+                        return <Comment comment={comment} setComments={setComments} setCommentCount={setCommentCount} key={comment.comment_id} className='comment-component' />
                         })}
                     </>
                 :
                     <p className="no-comments">A tummble weed rolls folornly over a desolate, comment-less landscape ... </p>
             }
-            <NewComment id={review_id} setComments={setComments} setPostConfirmed={setPostConfirmed} postConfirmed={postConfirmed} />
+            <NewComment id={review_id} setComments={setComments} setPostConfirmed={setPostConfirmed} postConfirmed={postConfirmed} setCommentCount={setCommentCount} />
         </section>
         
     </main>
