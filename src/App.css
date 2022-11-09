@@ -29,29 +29,47 @@ body {
   height: 100vh;
 }
 
+/* SPLASH */
 #splash {
   background-image: url('./imgs/splash-img.jpg');
   background-size: cover;
   background-position: center center;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 60vw 1fr;
+  grid-template-rows: 2fr 1fr 1fr 2fr 2fr;
   color: var(--light-tone);
 }
-
+#splash h1 {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  align-self: center;
+  justify-self: center;
+  font-size: 5rem;
+  text-align: center;
+}
+#splash p {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  align-self: center;
+  justify-self: center;
+  font-size: 2rem;
+  text-align: center;
+}
 #splash-reviews {
-  width: 50%;
-  height: 20%;
+  grid-column: 2/3;
+  grid-row: 4/5;
+  align-self: center;
+  justify-self: center;
+  width: 90vh;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .splash-review {
   height: 100%;
-  width: 25%;
+  width: 20vh;
   background-color: var(--background);
   margin: 20px;
 }
@@ -85,7 +103,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 }
 .profile-names {
   height: 100%;

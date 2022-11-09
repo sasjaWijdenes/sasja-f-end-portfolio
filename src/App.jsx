@@ -18,11 +18,15 @@ function App() {
     [allReviews, setAllReviews] = useState([]),
     [sort, setSort] = useState('created_at'),
     [order, setOrder] = useState(false),
-    [user, setUser] = useState(false)
+    [user, setUser] = useState(false),
+    [totalNumReviews, setTotalNumReviews] = useState(0),
+    [topThreeReviews, setTopThreeReviews] = useState([])
 
   useEffect(() => {
-    api.fetchAllReviews(sort, order).then(({data: {reviews}}) => {
+    api.fetchAllReviews(sort, order).then(({ data: { reviews } }) => {
+      const topThree = [];
       setAllReviews(reviews)
+      setTotalNumReviews(allReviews.length)
       setIsLoading(false)
     })
   }, [sort, order])
@@ -32,7 +36,7 @@ function App() {
   return (
     <UserContext.Provider value = { {user, setUser} }>
     <BrowserRouter >
-      <Splash />
+        <Splash totalNumReviews={totalNumReviews} />
       <div className="main-website">
       <Header />
       <Sidebar />
