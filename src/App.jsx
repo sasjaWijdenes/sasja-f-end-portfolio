@@ -19,17 +19,16 @@ function App() {
     [sort, setSort] = useState('created_at'),
     [order, setOrder] = useState(false),
     [user, setUser] = useState(false),
-    [totalNumReviews, setTotalNumReviews] = useState(0),
-    [topThreeReviews, setTopThreeReviews] = useState([])
+    [totalNumReviews, setTotalNumReviews] = useState(0)
 
   useEffect(() => {
     api.fetchAllReviews(sort, order).then(({ data: { reviews } }) => {
-      const topThree = [];
       setAllReviews(reviews)
-      setTotalNumReviews(allReviews.length)
       setIsLoading(false)
     })
   }, [sort, order])
+
+  useEffect(() => setTotalNumReviews(allReviews.length), [allReviews])
   
   if (isLoading) return <h2>Loading...</h2> 
 

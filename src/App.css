@@ -37,7 +37,7 @@ body {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 60vw 1fr;
-  grid-template-rows: 2fr 1fr 1fr 2fr 2fr;
+  grid-template-rows: 2fr 1fr 1fr 2fr;
   color: var(--light-tone);
 }
 #splash h1 {
@@ -55,23 +55,6 @@ body {
   justify-self: center;
   font-size: 2rem;
   text-align: center;
-}
-#splash-reviews {
-  grid-column: 2/3;
-  grid-row: 4/5;
-  align-self: center;
-  justify-self: center;
-  width: 90vh;
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.splash-review {
-  height: 100%;
-  width: 20vh;
-  background-color: var(--background);
-  margin: 20px;
 }
 
 main {
