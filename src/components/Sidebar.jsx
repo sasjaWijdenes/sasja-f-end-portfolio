@@ -1,8 +1,7 @@
 import * as api from '../api.js';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import ErrorCommponent from './ErrorCommponent.jsx';
-
+import NavListItem from './NavListItem.jsx';
 
 
 const Sidebar = ({error, setError}) => {
@@ -32,11 +31,7 @@ const Sidebar = ({error, setError}) => {
         <ul id='nav-list'>
             {categories.map(category => {
                 const {slug, description} = category
-                return <Link style={{textDecoration: 'none'}} to={`/reviews/${slug}`} key={`${slug}`}> <li className='nav-list-item'>
-                    <h2>{slug}</h2>
-                    <p className='sidebar-item-desc'>{description}</p>
-                </li>
-                </Link>
+                return <NavListItem key={`${slug}`} slug={slug} description={description} />
             })}
             </ul>
         ))}

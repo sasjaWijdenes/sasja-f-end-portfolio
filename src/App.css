@@ -128,7 +128,8 @@ header {
   margin-block: 20px;
 }
 .nav-list-item {
-  margin-inline: 10px;
+  width: 100%;
+  padding: 10%;
   color: var(--light-tone);
 }
 .nav-list-item:hover {
@@ -138,6 +139,10 @@ header {
 }
 .hamburger-btn {  
   display: none;
+  background-color: var(--side-bar);
+}
+.hamburger-btn span {
+  background-color: var(--light-tone);
 }
 @media screen and (max-width: 750px){
   .hamburger-btn {
@@ -194,7 +199,8 @@ header {
   display: none;
 }
 .radio-label {
-  background-color: var(--light-tone);
+  background-color: var(--side-bar);
+  color: var(--light-tone);
   cursor: pointer;
   transition: 0.1s;
   width: 10%;
@@ -204,6 +210,13 @@ header {
   align-items: center;
   overflow: hidden;
   border-radius: 30px;
+}
+.radio-label:hover {
+  background-color: var(--dark-tone);
+  width: 15%;
+  height: 110%;
+  border-radius: 15px;
+  border: 4px solid var(--light-tone);
 }
 .radio-input:checked + .radio-label {
   background-color: var(--highlight);
@@ -241,6 +254,12 @@ header {
   position: relative;
   display: flex;
   overflow: hidden;
+}
+.card:hover {
+  border: 3px solid var(--light-tone);
+  height: 90vw;
+  width: 95vw;
+  box-shadow:inset 0 0 0 0 50px rgb(0 0 0 / 0.5);
 }
 .card img {
   width: 100%;
