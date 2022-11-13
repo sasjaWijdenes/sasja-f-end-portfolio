@@ -9,6 +9,7 @@ import IndividualReview from './components/IndividualReview';
 import Comunity from './components/Comunity';
 import NewReview from './components/NewReview';
 import Splash from './components/Splash';
+import ErrorPage from './components/ErrorPage';
 import * as api from './api.js'
 import CategoryReviews from './components/CategoryReviews';
 
@@ -39,8 +40,8 @@ function App() {
       <div className="main-website">
       <Header />
       <Sidebar />
-      
       <Routes>
+        <Route path='*' element={<ErrorPage/>} />
         <Route path='reviews/:categoryX' element={<CategoryReviews sort={sort} setSort={setSort} order={order} setOrder={setOrder} />} />
         <Route path='reviews/:categoryX/reviewPage/:review_id' element={<IndividualReview />} />
         <Route path='reviewPage/:review_id' element={<IndividualReview />} />
