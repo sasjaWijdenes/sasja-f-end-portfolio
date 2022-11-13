@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import * as api from '../api.js'
 import { useState } from 'react'
-import {FaAngleUp, FaAngleDown, FaRegCommentAlt} from 'react-icons/fa'
+import { FaAngleUp, FaAngleDown, FaRegCommentAlt } from 'react-icons/fa'
+import ErrorCommponent from './ErrorCommponent.jsx'
 const dayjs = require('dayjs')
 const relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
-const Card = ({ review }) => {
+const Card = ({ review, error, setError }) => {
     const {review_id, title, votes, comment_count, review_img_url, created_at, review_body, owner, category } = review;
 
     const [cardVotes, setCardVotes] = useState(votes)
@@ -25,7 +26,7 @@ const Card = ({ review }) => {
                 setCardVotes(cardVotes - 1)
                 setVotingFailed(true)
                 setUpVoted(false)
-            })
+            }).catch(err => setError(err))
             setCardVotes(prevCardVotes => prevCardVotes + 1)
         }
         if (!downVoted) setUpVoted(true)
@@ -38,12 +39,15 @@ const Card = ({ review }) => {
                 setCardVotes(cardVotes - 1)
                 setVotingFailed(true)
                 setDownVoted(false)
-            })
+            }).catch(err => setError(err))
             setCardVotes(prevCardVotes => prevCardVotes - 1)
         }
         if (!upVoted) setDownVoted(true)
     }
     
+  if(error) return <ErrorCommponent error={error} />
+
+
     return <Link to={`reviewPage/${review_id}`} className="card">
         <h3 className="card-title">{ title }</h3>
         <img src={`${review_img_url}`} alt={title} />

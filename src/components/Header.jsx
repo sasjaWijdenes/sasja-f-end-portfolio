@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import ProfileWidget from "./ProfileWidget"
 
-const Header = () => {
+const Header = ({error, setError}) => {
     return <header>
         <h1>NC GAMES</h1>
         <nav>
@@ -9,7 +9,7 @@ const Header = () => {
             <Link className="header-nav" style={{textDecoration: 'none'}} to='/' > HOME </Link>
             <Link className="header-nav" style={{textDecoration: 'none'}} to='/reviewPage/newReview' > NEW REVIEW </Link>
         </nav>
-        <ProfileWidget />
+        <ProfileWidget error={error} setError={setError} />
     </header>
 }
 export default Header

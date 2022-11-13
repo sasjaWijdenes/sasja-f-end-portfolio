@@ -1,10 +1,11 @@
 import * as api from '../api.js';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ErrorCommponent from './ErrorCommponent.jsx';
 
 
 
-const Sidebar = () => {
+const Sidebar = ({error, setError}) => {
     const [categories, setCategories] = useState([])
     const [toggleSideBar, setToggleSideBar] = useState(false)
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
@@ -12,7 +13,7 @@ const Sidebar = () => {
     useEffect(() => {
         api.fetchCategories().then(({ data: { categories: fetchedCategories } }) => {
             setCategories(fetchedCategories)
-        })
+        }).catch(err => setError(err))
     }, [])
     useEffect(() => {
         const changeWidth = () => {
@@ -25,6 +26,7 @@ const Sidebar = () => {
         setToggleSideBar(!toggleSideBar)
     }
 
+    if(error) return <ErrorCommponent error={error} />
     return <nav id="sidebar-nav" className= {toggleSideBar || screenWidth > 750 ? '': 'colapse'} >
         {((toggleSideBar || screenWidth > 750) && (  
         <ul id='nav-list'>

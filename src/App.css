@@ -587,3 +587,6 @@ header {
 .grey-out {
   color: grey;
 }
+.error-red {
+  color: red;
+}

@@ -1,5 +1,5 @@
 import CommentVotingButtons from './CommentVotingButtons'
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../contexts/UserContext.jsx'
 import { MdDeleteForever } from 'react-icons/md'
 import * as api from '../api.js'
@@ -17,8 +17,7 @@ const Comment = ({ comment: { comment_id, body, review_id, author, votes, create
     }
 
 
-    const { user, setUser } = useContext(UserContext)
-    console.log(user, 'user', author, 'author')
+    const { user } = useContext(UserContext)
     const postedAgo = dayjs(created_at).fromNow()
     return <div className="comment" >
         <p className="comment-author">{author}</p>
