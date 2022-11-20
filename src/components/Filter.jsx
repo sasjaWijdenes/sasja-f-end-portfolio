@@ -20,7 +20,7 @@ const Filter = ({ sort, setSort, order, setOrder }) => {
         <input type="radio" value='category' name="sort" className="radio-input" id="category" onChange={handleChange}/>
         <label htmlFor="category" className="radio-label">category</label>
         <input type="radio" value='created_at' name="sort" className="radio-input" id="created_at" onChange={handleChange}/>
-        <label htmlFor="created_at" className="radio-label">created_at</label>
+        <label htmlFor="created_at" className="radio-label">age</label>
         <input type="radio" value='votes' name="sort" className="radio-input" id="votes" onChange={handleChange}/>
         <label htmlFor="votes" className="radio-label">votes</label>
         <button id="toggle-order" onClick={toggleOrder}>{order? 'ASC': 'DESC'}</button>

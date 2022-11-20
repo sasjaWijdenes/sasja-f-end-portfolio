@@ -39,8 +39,8 @@ function App() {
   return (
     <UserContext.Provider value = { {user, setUser} }>
     <BrowserRouter >
-        <Splash totalNumReviews={totalNumReviews} />
       <div className="main-website">
+      <Splash totalNumReviews={totalNumReviews} />
       <Header error={error} setError={setError}/>
       <Sidebar error={error} setError={setError} />
       <Routes>

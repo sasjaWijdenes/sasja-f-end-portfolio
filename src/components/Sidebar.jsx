@@ -1,5 +1,6 @@
 import * as api from '../api.js';
 import { useEffect, useState } from 'react';
+import {HiOutlineMenuAlt2} from 'react-icons/hi'
 import ErrorCommponent from './ErrorCommponent.jsx';
 import NavListItem from './NavListItem.jsx';
 
@@ -35,11 +36,7 @@ const Sidebar = ({error, setError}) => {
             })}
             </ul>
         ))}
-        <button onClick={toggleNav} className='hamburger-btn'>
-            <span className='hm-bar' />
-            <span className='hm-bar' />
-            <span className='hm-bar' />
-        </button>
+            <HiOutlineMenuAlt2 onClick={toggleNav} className='hamburger-btn'/>
     </nav>
     
 }
