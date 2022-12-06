@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://sasjas-portfolio.herokuapp.com/'
+    baseURL: 'https://wide-eyed-pear-cricket.cyclic.app/'
 })
 
 export const fetchAllReviews = (sort, order) => {
